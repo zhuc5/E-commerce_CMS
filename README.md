@@ -56,12 +56,10 @@
             │   ├── rank
             │   ├── sex
             │   ├── top
-            │   ├── tourist  
+            │   ├── tourist
             │   └── year
             └── images  数据大屏图片资源
 ```
-
-
 
 # 登录
 
