@@ -56,47 +56,49 @@
             │   ├── rank
             │   ├── sex
             │   ├── top
-            │   ├── tourist
+            │   ├── tourist  
             │   └── year
             └── images  数据大屏图片资源
 ```
 
+
+
 # 登录
 
-![image-20240102120218667](/Users/zcc/Library/Application Support/typora-user-images/image-20240102120218667.png)
+![image-20240102120218667](pic/image-20240102120218667.png)
 
 # 权限管理
 
 ## 用户管理
 
-![image-20240102120334386](/Users/zcc/Library/Application Support/typora-user-images/image-20240102120334386.png)
+![image-20240102120334386](pic/image-20240102120334386.png)
 
 ## 角色管理
 
-![image-20240102120529328](/Users/zcc/Library/Application Support/typora-user-images/image-20240102120529328.png)
+![image-20240102120529328](pic/image-20240102120529328.png)
 
 ## 菜单管理
 
-![image-20240102120627145](/Users/zcc/Library/Application Support/typora-user-images/image-20240102120627145.png)
+![image-20240102120627145](pic/image-20240102120627145.png)
 
 # 商品管理
 
 ## 品牌管理
 
-![image-20240102120705839](/Users/zcc/Library/Application Support/typora-user-images/image-20240102120705839.png)
+![image-20240102120705839](pic/image-20240102120705839.png)
 
 ## 属性管理
 
-![image-20240102121224726](/Users/zcc/Library/Application Support/typora-user-images/image-20240102121224726.png)
+![image-20240102121224726](pic/image-20240102121224726.png)
 
 ## SKU管理
 
-![image-20240102121311893](/Users/zcc/Library/Application Support/typora-user-images/image-20240102121311893.png)
+![image-20240102121311893](pic/image-20240102121311893.png)
 
 ## SPU管理
 
-![image-20240102121425425](/Users/zcc/Library/Application Support/typora-user-images/image-20240102121425425.png)
+![image-20240102121425425](pic/image-20240102121425425.png)
 
 # 数据大屏
 
-![image-20240102121459253](/Users/zcc/Library/Application Support/typora-user-images/image-20240102121459253.png)
+![image-20240102121459253](pic/image-20240102121459253.png)
