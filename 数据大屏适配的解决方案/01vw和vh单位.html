@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      /* 写了100vw,100vh 不管用户屏幕多大 都会被完全占满 */
+      /* 宽高 1920px*1080px= 16:9 */
+      width: 100vw;
+      height: 100vh;
+      background-color: orange;
+    }
+
+    .top {
+      /* 假设宽 100px 换算成 5.2vw,  高100px， 换算成9.26vh */
+      width: 5.2vw;
+      height: 9.26vh;
+      background-color: pink;
+    }
+
+    .bottom {
+      /* 假设宽 100px 换算成 5.2vw,  高100px， 换算成9.26vh */
+      width: 5.2vw;
+      height: 9.26vh;
+      background-color: skyblue;
+    }
+  </style>
+
+  <body>
+    <div class="box">
+      <div class="top">数据大屏</div>
+      <div class="bottom">haha</div>
+    </div>
+  </body>
+  <script>
+    // vw，vh兼容ie8以上
+  </script>
+</html>

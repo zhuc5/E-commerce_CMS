@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body></body>
+  <script>
+    let constantRoute = [
+      {
+        //登陆页面
+        path: '/login',
+        component: () => import('@/views/login/index.vue'),
+        name: 'login',
+        meta: {
+          title: '登陆',
+          hidden: true,
+          icon: 'Promotion',
+        },
+      },
+      {
+        // 登陆成功后 展示数据的路由
+        path: '/',
+        component: () => import('@/layout/index.vue'),
+        name: 'layout',
+        meta: {
+          // title: 'layout',
+          hidden: false,
+          icon: 'Avatar',
+        },
+        // 当访问根的时候，直接跳转到其下的子路由 “首页组件”
+        redirect: '/home',
+        children: [
+          {
+            path: '/home',
+            name: 'home',
+            component: () => import('@/views/home/index.vue'),
+            meta: {
+              title: '首页',
+              hidden: false,
+              icon: 'HomeFilled',
+            },
+          },
+          // {
+          //   path: '/test',
+          //   component: () => import('@/views/home/index.vue'),
+          //   meta: {
+          //     title: '测试',
+          //     hidden: false,
+          //     icon: 'Histogram',
+          //   },
+          // },
+        ],
+      },
+      {
+        path: '/screen',
+        component: () => import('@/views/screen/index.vue'),
+        name: 'Screen',
+        meta: {
+          title: '数据大屏',
+          hidden: false,
+          icon: 'Platform',
+        },
+      },
+
+      {
+        path: '/404',
+        component: () => import('@/views/404/index.vue'),
+        name: '404',
+        meta: {
+          title: '404',
+          hidden: true,
+          icon: 'DocumentDelete',
+        },
+      },
+      // 任意错的地址
+      // {
+      //   // 注意pathMatch只是1个变量名，其后的一对小括号填正则，
+      //   path: '/:pathMatch(.*)*',
+      //   redirect: '/404',
+      //   name: 'Any',
+      //   meta: {
+      //     title: '任意路由',
+      //     hidden: true,
+      //     icon: 'Box',
+      //   },
+      // },
+    ]
+    //异步路由
+    let asnycRoute = [
+      {
+        path: '/acl',
+        component: () => import('@/layout/index.vue'),
+        name: 'Acl',
+        meta: {
+          title: '权限管理',
+          hidden: false,
+          icon: 'Lock',
+        },
+        redirect: '/acl/user',
+        children: [
+          {
+            path: '/acl/user',
+            name: 'User',
+            component: () => import('@/views/acl/user/index.vue'),
+            meta: {
+              title: '用户管理',
+              hidden: false,
+              icon: 'User',
+            },
+          },
+          {
+            path: '/acl/role',
+            name: 'Role',
+            component: () => import('@/views/acl/role/index.vue'),
+            meta: {
+              title: '角色管理',
+              hidden: false,
+              icon: 'UserFilled',
+            },
+          },
+          {
+            path: '/acl/permission',
+            name: 'Permission',
+            component: () => import('@/views/acl/permission/index.vue'),
+            meta: {
+              title: '菜单管理',
+              hidden: false,
+              icon: 'Grid',
+            },
+          },
+        ],
+      },
+      {
+        path: '/product',
+        component: () => import('@/layout/index.vue'),
+        name: 'Product',
+        meta: {
+          title: '商品管理',
+          hidden: false,
+          icon: 'Goods',
+        },
+        redirect: '/product/trademark',
+        children: [
+          {
+            path: '/product/trademark',
+            component: () => import('@/views/product/trademark/index.vue'),
+            name: 'Trademark',
+            meta: {
+              title: '品牌管理',
+              hidden: false,
+              icon: 'ShoppingCartFull',
+            },
+          },
+          {
+            path: '/product/attr',
+            component: () => import('@/views/product/attr/index.vue'),
+            name: 'Attr',
+            meta: {
+              title: '属性管理',
+              hidden: false,
+              icon: 'ChromeFilled',
+            },
+          },
+          {
+            path: '/product/sku',
+            component: () => import('@/views/product/sku/index.vue'),
+            name: 'Sku',
+            meta: {
+              title: 'Sku管理',
+              hidden: false,
+              icon: 'Orange',
+            },
+          },
+          {
+            path: '/product/spu',
+            component: () => import('@/views/product/spu/index.vue'),
+            name: 'Spu',
+            meta: {
+              title: 'Spu管理',
+              hidden: false,
+              icon: 'Calendar',
+            },
+          },
+        ],
+      },
+    ]
+
+    //任意路由
+    let anyRoute = {
+      //任意路由
+      path: '/:pathMatch(.*)*',
+      redirect: '/404',
+      name: 'Any',
+      meta: {
+        title: '任意路由',
+        hidden: true,
+        icon: 'DataLine',
+      },
+    }
+    /*
+    
+    */
+    let guigu333 = ['Acl', 'User', 'Role']
+    function filterRoutes(asnycRoute, userHasRoutes) {
+      return asnycRoute.filter((item) => {
+        if (userHasRoutes.includes(item.name)) {
+          console.log('包含了', item.name)
+          // 只包含了acl
+          if (item.children && item.children.length > 0) {
+            let res = filterRoutes(item.children, userHasRoutes)
+            item.children = res
+            console.log('res', res)
+          }
+          return true
+        }
+      })
+    }
+
+    /*
+    第一次 item= acl ，包含了acl, 
+    acl的children是 [user,role,permission]，触发递归一层
+    => filterroutes([user,role,permission])
+    在filterroutes([user,role,permission])中：每个item中 只有user, role包含，
+    所以return [user,role]
+    返回到第一层  filterroutes([user,role,permission])返回结果是 [user,role],
+    应该用这个结果 替换掉acl的children, 结果acl.chilren=[user,role],
+    返回acl 节点， {acl,children:[{user,role}]}
+   
+    但是 item.children=filterRoutes(item.children, userHasRoutes); 这一步会改变原数据
+    ,所以每次调用过滤函数要用深拷贝 原异步路由
+   
+   
+    */
+    let result = filterRoutes(asnycRoute, guigu333)
+    console.log('result', result)
+    console.log('asnycRoute', asnycRoute)
+    let res1 = [...result]
+    console.log('res1', res1)
+    // const filterSelectArr = (allData: any, initArr: any) => {
+    //     allData.forEach((item: any) => {
+    //         // 只筛选功能按钮是否select=true,前面3级不管
+    //         if (item.select && item.level == 4) {
+    //             console.log('有权限,', item.name)
+    //             initArr.push(item.id)
+    //         }
+    //         // 递归children
+    //         if (item.children && item.children.length > 0) {
+    //             filterSelectArr(item.children, initArr)
+    //         }
+    //     })
+    //     return initArr;
+    // }
+    // 解构出所有静态路由
+    let newarr = []
+    const filtcr = (allcr, newarr) => {
+      allcr.forEach((item) => {
+        newarr.push(item.name)
+        if (item.children && item.children.length > 0) {
+          filtcr(item.children, newarr)
+        }
+      })
+    }
+    filtcr(constantRoute, newarr)
+    console.log('筛出所有静态', newarr)
+  </script>
+</html>

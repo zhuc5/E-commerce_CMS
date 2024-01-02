@@ -13,18 +13,33 @@
     "lint:eslint": "eslint src/**/*.{ts,vue} --cache --fix",
     "lint:style": "stylelint src/**/*.{css,scss,vue} --cache --fix",
     "prepare": "husky install",
-    "commitlint": "commitlint --config commitlint.config.cjs -e -V"
+    "commitlint": "commitlint --config commitlint.config.cjs -e -V",
+    "build:test": "vue-tsc && vite build --mode test",
+    "build:pro": "vue-tsc && vite build --mode production",
+    "build:no-vue-tsc": "vite build"
   },
   "dependencies": {
-    "vue": "^3.3.8"
+    "axios": "^1.6.2",
+    "color": "^4.2.3",
+    "echarts": "^5.4.3",
+    "echarts-liquidfill": "^3.1.0",
+    "element-plus": "^2.4.2",
+    "moment": "^2.29.4",
+    "nprogress": "^0.2.0",
+    "pinia": "^2.1.7",
+    "vue": "^3.3.8",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.23.3",
     "@commitlint/cli": "^18.4.2",
     "@commitlint/config-conventional": "^18.4.2",
+    "@types/color": "^3.0.6",
+    "@types/nprogress": "^0.2.3",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
     "@typescript-eslint/parser": "^6.11.0",
     "@vitejs/plugin-vue": "^4.5.0",
+    "default-passive-events": "^2.0.0",
     "eslint": "^8.53.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
@@ -32,6 +47,7 @@
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-vue": "^9.18.1",
     "husky": "^8.0.0",
+    "mockjs": "^1.1.0",
     "postcss": "^8.4.31",
     "postcss-html": "^1.5.0",
     "postcss-scss": "^4.0.9",
@@ -49,6 +65,8 @@
     "stylelint-scss": "^5.3.1",
     "typescript": "^5.2.2",
     "vite": "^5.0.0",
+    "vite-plugin-mock": "^2.9.6",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vue-tsc": "^1.8.22"
   }
 }
